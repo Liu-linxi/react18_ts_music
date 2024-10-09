@@ -91,7 +91,9 @@
 
       <img src="./img/2.png" alt="image-20240814160308032" style="zoom: 80%;" />
    
-6. 安装less`npm install craco-less`[链接](https://4x.ant.design/docs/react/use-with-create-react-app-cn)
+6. 安装less  `npm install craco-less`   [链接](https://4x.ant.design/docs/react/use-with-create-react-app-cn)
+
+7. 安装路由`npm install react-router-dom`
 
    
 
