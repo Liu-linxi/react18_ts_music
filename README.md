@@ -2,11 +2,33 @@
 
 # 一、脚手架创建react-Ts项目
 
-```shell
- create-react-app 项目名字 --template typescript
-```
+1. 创建项目
 
-传统的使用`create-react-app 项目名字`即可,这里需要使用ts因此加入后缀
+   ```shell
+    create-react-app 项目名字 --template typescript
+   ```
+
+   传统的使用`create-react-app 项目名字`即可,这里需要使用ts因此加入后缀
+
+2. webpack 是隐藏配置,   因此这里使用craco(全程`create-react-app  config `)来配置别名和其他配置,  不推荐使用eject因为会暴露出来所有的
+
+   使用craco安装这里是最新的官方已经更新
+
+   ```shell
+   npm i -D @craco/craco
+   ```
+
+   注:旧版本
+
+   因为最新版本`"react-scripts": "5.0.1"`因此在命令后加上`@alpha`
+
+   ```shell
+   npm install  @craco/craco@alpha -D
+   ```
+
+   修改配置--配置项目别名
+
+   <img src="./img/1.png" style="zoom:50%;" />
 
 # Getting Started with Create React App
 
