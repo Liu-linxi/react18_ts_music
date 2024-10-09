@@ -1,0 +1,21 @@
+# 忽略所有的构建目录
+build/
+
+# 忽略特定文件
+.local
+
+# 忽略所有的 Markdown 文件
+*.md
+
+# 忽略特定的子目录
+node_modules/
+
+#项目所需
+/dist/*
+.loacl
+.output.js
+/node_modules/**
+
+**/*.svg
+**/*.sh
+/public/*
