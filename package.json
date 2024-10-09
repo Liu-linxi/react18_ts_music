@@ -21,7 +21,7 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "prettier":"prettier --write ."
+    "prettier": "prettier --write ."
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +43,11 @@
   },
   "devDependencies": {
     "@craco/craco": "^7.1.0",
-    "prettier": "^3.3.3"
+    "@eslint/js": "^9.12.0",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react": "^7.37.1",
+    "globals": "^15.10.0",
+    "prettier": "^3.3.3",
+    "typescript-eslint": "^8.8.1"
   }
 }

@@ -30,6 +30,70 @@
 
    <img src="./img/1.png" style="zoom:50%;" />
 
+3. 配置.editorconfig文件
+
+   ```
+   # http://editorconfig.org
+   root = true
+   
+   # 适用于所有文件
+   [*]
+   charset = utf-8 #设置文件字符集为 utf-8
+   indent_style = space #缩进风格(tab | space)
+   indent_size = 2 #缩进大小
+   end_of_line = lf #控制换行类型(lf|cr |crlf)
+   tab_width = 2 #定义用于表示制表符的列数的整数
+   trim_trailing_whitespace = true # 去除行尾的任意空白字符
+   insert_final_newline = true # 始终在文件末尾插入一个新行
+   
+   # 适用于所有 Markdown 文件
+   [*.md]
+   indent_size = 4
+   max_line_length = off
+   trim_trailing_whitespace = false
+   
+   # 适用于 JavaScript 文件
+   [*.js]
+   indent_size = 2
+   
+   # 适用于 JSON 文件
+   [*.json]
+   indent_size = 2
+   
+   # 适用于 TypeScript 文件
+   [*.ts]
+   indent_size = 2
+   
+   # 适用于 HTML 文件
+   [*.html]
+   indent_size = 2
+   # 适用于 CSS 文件
+   [*.css]
+   indent_size = 2
+   
+   ```
+
+4. [配置prettier](https://github.com/Liu-linxi/vue3-ts-manage/blob/main/%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E8%A7%84%E8%8C%83.md)
+
+5. 配置eslint
+
+   1. 安装
+
+      ```shell
+      npm install eslint -D
+      ```
+
+   2. 初始化
+
+      ```sh
+      npx eslint --init
+      ```
+
+      <img src="./img/2.png" alt="image-20240814160308032" style="zoom: 80%;" />
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
