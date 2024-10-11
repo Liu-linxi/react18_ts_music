@@ -93,9 +93,11 @@
    
 6. 安装less  `npm install craco-less`   [链接](https://4x.ant.design/docs/react/use-with-create-react-app-cn)
 
-7. 安装路由`npm install react-router-dom`
+7. 安装路由`npm install react-router-dom`配置路由
 
-   
+7. 安装redux `npm install @reduxjs/toolkit react-redux`这两个库react-redux作用是将redux和组件连接起来
+
+     
 
 
 
