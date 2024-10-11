@@ -15,6 +15,8 @@ const Mine = lazy(() => import("@/views/mine")); //我的音乐
 const Focus = lazy(() => import("@/views/focus")); //关注
 const Download = lazy(() => import("@/views/download")); //下载客户端
 
+const Template = lazy(() => import("@/views/demo/template")); //模板使用示例
+
 const routes: RouteObject[] = [
   {
     path: "/",
@@ -61,6 +63,14 @@ const routes: RouteObject[] = [
   {
     path: "/download",
     element: <Download />,
+  },
+  {
+    path: "/mine",
+    element: <Mine />,
+  },
+  {
+    path: "/template",
+    element: <Template />,
   },
 ];
 
