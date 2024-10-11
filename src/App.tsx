@@ -1,8 +1,8 @@
 import React, { Suspense } from "react";
 import { Link, useRoutes } from "react-router-dom";
 import routes from "./router";
-import { shallowEqual } from "react-redux";
-import { useAppSelector } from "./store"; //类型配置方法三
+import { useAppSelector,useAppDispatch,useShallowEqual } from "./store"; //类型配置方法三
+import { changeName } from "./store/moudules/counter";
 
 // import store from "./store";
 // 类型配置方法一
@@ -24,8 +24,13 @@ function App() {
       count: state.counter.count,
       name: state.counter.name,
     }),
-    shallowEqual,
+    useShallowEqual,
   );
+  /** 事件处理函数 */
+  const dispatch = useAppDispatch();
+  function handleChangeName() {
+    dispatch(changeName("修改后林夕"))
+  }
   return (
     <div className='App'>
       <div className='nav'>
@@ -35,9 +40,10 @@ function App() {
         <Link to='/download'>下载客户端</Link>
       </div>
       <h1>
-        {count}
-        {name}
+        {name} {count}
+        <button onClick={handleChangeName}>修改name</button>
       </h1>
+
       {/* 使用懒加载要搭配Suspense使用避免因为还未加载页面产生报错 fallback可以自定义文本或者定义组件展示于此*/}
       <Suspense fallback='loading...'>
         <div className='main'>{useRoutes(routes)}</div>
