@@ -5,7 +5,12 @@ import pluginReact from "eslint-plugin-react";
 
 
 export default [
-  {files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"]},
+  {
+    files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
+    rules: {
+      '@typescript-eslint/no-var-requires': 'off', // 或 'warn' 或 'error'
+    },
+  },
   {languageOptions: { globals: globals.browser }},
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
