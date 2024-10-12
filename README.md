@@ -97,6 +97,8 @@
 
 7. 安装redux `npm install @reduxjs/toolkit react-redux`这两个库react-redux作用是将redux和组件连接起来
 
+7. 安装请求库`npm install axios`
+
      
 
 
