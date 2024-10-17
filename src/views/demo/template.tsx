@@ -38,7 +38,7 @@ const Template: FC<IProps> = () => {
   }
   return (
     <div>
-      <Demo2/>
+      <Demo2 name="传递参数给类子组件" age={18}/>
       <div>Template</div>
       <h1>
         {name} {count}
