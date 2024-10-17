@@ -3,6 +3,7 @@ import type { FC, ReactNode } from "react";
 
 import { useAppSelector, useAppDispatch, useShallowEqual } from "@/store"; //类型配置方法三
 import { changeName } from "@/store/moudules/counter";
+import Demo2 from "./demo";
 
 // import store from "./store";
 // 类型配置方法一
@@ -37,6 +38,7 @@ const Template: FC<IProps> = () => {
   }
   return (
     <div>
+      <Demo2/>
       <div>Template</div>
       <h1>
         {name} {count}
