@@ -7,6 +7,8 @@ const lxRequest = new LXRequest({
   interceptors: {
     requestSuccessFn: (config) => {
       console.log("请求成功拦截:", config);
+      // 临时处理如果使用本地操作就追加请求本地文件
+      config.url = process.env.REACT_APP_ISMOCK === "true" ? config.url + ".json" : config.url;
       return config;
     },
     requestFailureFn: (err) => {

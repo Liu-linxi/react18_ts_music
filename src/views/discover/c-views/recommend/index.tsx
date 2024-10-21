@@ -28,12 +28,13 @@ const Recommend: FC<IProps> = () => {
         url: "/banner",
       })
       .then((res) => {
+        console.log(res)
         setBanners(res.banners);
       });
   }, []);
   return (
     <div>
-      {banners.map((item, index) => {
+      {banners?.map((item, index) => {
         return <div key={index}>{item.imageUrl}</div>;
       })}
     </div>
