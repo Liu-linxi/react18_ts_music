@@ -4,6 +4,9 @@ import { NavLink } from "react-router-dom";
 import { HeaderLeft, HeaderRight, HeaderWrapper } from "./styled";
 import type { HeaderLinksType } from "@/type/local-data";
 import { headerLinks } from "@/service/local-data";
+import { Input } from "antd";
+import { SearchOutlined } from '@ant-design/icons';
+
 interface IProps {
   children?: ReactNode; // 或者React.ReactNode
 }
@@ -42,7 +45,11 @@ const AppHeader: FC<IProps> = () => {
             })}
           </div>
         </HeaderLeft>
-        <HeaderRight></HeaderRight>
+        <HeaderRight>
+          <Input className='search' placeholder='音乐/视频/电台/用户' prefix={<SearchOutlined />} />
+          <div className='center'>创作者中心</div>
+          <div className=''>登录</div>
+        </HeaderRight>
       </div>
       <div className='divider'></div>
     </HeaderWrapper>
