@@ -40,7 +40,6 @@ export const HeaderLeft = styled.div`
         display: block;
         padding: 0 20px;
         color: #ccc;
-
       }
 
       &:last-of-type a {
@@ -54,7 +53,7 @@ export const HeaderLeft = styled.div`
           background-image: url(${sprite});
           background-position: -190px 0;
           top: 20px;
-          right: -15px;
+          right: -6px;
         }
       }
 
@@ -105,5 +104,14 @@ export const HeaderRight = styled.div`
     border: 1px solid #666;
     border-radius: 16px;
     margin: 0 16px;
+    cursor: pointer;
+    &:hover {
+      text-decoration: none;
+      color: #fff;
+      border-color: #fff;
+    }
+  }
+  a {
+    color: #999;
   }
 `;

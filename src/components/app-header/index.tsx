@@ -5,7 +5,7 @@ import { HeaderLeft, HeaderRight, HeaderWrapper } from "./styled";
 import type { HeaderLinksType } from "@/type/local-data";
 import { headerLinks } from "@/service/local-data";
 import { Input } from "antd";
-import { SearchOutlined } from '@ant-design/icons';
+import { SearchOutlined } from "@ant-design/icons";
 
 interface IProps {
   children?: ReactNode; // 或者React.ReactNode
@@ -47,8 +47,12 @@ const AppHeader: FC<IProps> = () => {
         </HeaderLeft>
         <HeaderRight>
           <Input className='search' placeholder='音乐/视频/电台/用户' prefix={<SearchOutlined />} />
-          <div className='center'>创作者中心</div>
-          <div className=''>登录</div>
+          <a className='center' href='https://music.163.com/#/login?targetUrl=%2Fcreatorcenter' target='_blank' rel='noopener noreferrer'>
+            创作者中心
+          </a>
+          <a href='https://music.163.com/#/login?targetUrl=%2Fcreatorcenter' target='_blank' rel='noopener noreferrer'>
+            登录
+          </a>
         </HeaderRight>
       </div>
       <div className='divider'></div>
