@@ -3,6 +3,7 @@ import type { FC, ReactNode } from "react";
 import { useDispatch } from "react-redux";
 import { fetchBannerDataAction } from "./store/recommend";
 import { AppDispatchType } from "@/store";
+import TopBanner from "./c-cpns/top-banner";
 
 interface IProps {
   children?: ReactNode; // 或者React.ReactNode
@@ -14,8 +15,13 @@ const Recommend: FC<IProps> = () => {
 
   useEffect(() => {
     dispatch(fetchBannerDataAction());
-  }, []);
-  return <div>Recommend</div>;
+  }, [dispatch]);
+
+  return (
+    <div>
+      <TopBanner/>
+    </div>
+  );
 };
 
 export default memo(Recommend);
