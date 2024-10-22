@@ -6,8 +6,11 @@ export function getBanners() {
   });
 }
 
-export function getHotRecommend() {
+export function getHotRecommend(limit=30) {
   return lxRequest.get({
-    url: "/personalized"
+    url: "/personalized",
+    params:{
+      limit
+    }
   })
 }

@@ -10,7 +10,7 @@ export const fetchBannerDataAction = createAsyncThunk("banners", async (arg, { d
 });
 
 export const fetchHotRecommnedAction=createAsyncThunk("hotRecommend",async(arg, { dispatch })=>{
-  const res = await getHotRecommend();
+  const res = await getHotRecommend(8);
   dispatch(changeHotRecommnedAction(res.result));
 
 })
