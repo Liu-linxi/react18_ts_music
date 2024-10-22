@@ -1,44 +1,21 @@
-import lxRequest from "@/service";
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useEffect } from "react";
 import type { FC, ReactNode } from "react";
+import { useDispatch } from "react-redux";
+import { fetchBannerDataAction } from "./store/recommend";
+import { AppDispatchType } from "@/store";
 
 interface IProps {
   children?: ReactNode; // 或者React.ReactNode
 }
 
-export interface IBannerData {
-  imageUrl: string;
-  targetId: number;
-  targetType: number;
-  titleColor: string;
-  typeTitle: string;
-  exclusive: boolean;
-  encodeId: string;
-  scm: string;
-  bannerBizType: string;
-}
-
 // 或者React.FC
 const Recommend: FC<IProps> = () => {
-  const [banners, setBanners] = useState<IBannerData[]>([]);
+  const dispatch: AppDispatchType = useDispatch();
 
   useEffect(() => {
-    lxRequest
-      .get({
-        url: "/banner",
-      })
-      .then((res) => {
-        console.log(res)
-        setBanners(res.banners);
-      });
+    dispatch(fetchBannerDataAction());
   }, []);
-  return (
-    <div>
-      {banners?.map((item, index) => {
-        return <div key={index}>{item.imageUrl}</div>;
-      })}
-    </div>
-  );
+  return <div>Recommend</div>;
 };
 
 export default memo(Recommend);
