@@ -26,6 +26,14 @@ const routes: RouteObject[] = [
     path: "/discover",
     element: <Discover />,
     children: [
+      /**
+       * 使用 Navigate 代替 Redirect。
+       * 在 path 为 "" 的子路由中使用 element 属性进行重定向。
+       */
+      {
+        path: "",
+        element: <Navigate to="/discover/recommend" />,
+      },
       {
         path: "/discover/recommend",
         element: <Recommend />,
