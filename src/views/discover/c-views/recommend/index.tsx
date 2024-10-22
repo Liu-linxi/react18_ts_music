@@ -6,6 +6,7 @@ import { AppDispatchType } from "@/store";
 import { RecommendWraper, Content, RecommendLeft, RecommendRight } from "./style";
 
 import TopBanner from "./c-cpns/top-banner";
+import HotRecommend from "./c-cpns/hot-recommend";
 
 interface IProps {
   children?: ReactNode; // 或者React.ReactNode
@@ -23,7 +24,9 @@ const Recommend: FC<IProps> = () => {
     <RecommendWraper>
       <TopBanner />
       <Content className='wrap-v2'>
-        <RecommendLeft></RecommendLeft>
+        <RecommendLeft>
+          <HotRecommend />
+        </RecommendLeft>
         <RecommendRight></RecommendRight>
       </Content>
     </RecommendWraper>
