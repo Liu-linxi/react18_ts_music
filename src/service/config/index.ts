@@ -12,3 +12,9 @@ if (process.env.NODE_ENV === "development") {
  */
 // 方法三配置.env文件
 // console.log(process.env);
+
+
+/**
+ * 文档地址
+ * https://neteasecloudmusicapi.js.org/#/
+ */
