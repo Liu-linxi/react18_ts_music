@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import download from '@/assets/img/download.png'
-import banner_sprite from '@/assets/img/banner_sprite.png'
+import download from "@/assets/img/download.png";
+import banner_sprite from "@/assets/img/banner_sprite.png";
 
 interface BannerWrapperProps {
   bgimage: string;
@@ -45,6 +45,7 @@ export const BannerControl = styled.div`
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  height: 63px;
 
   .btn {
     position: absolute;
