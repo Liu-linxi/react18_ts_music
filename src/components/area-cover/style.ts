@@ -23,6 +23,7 @@ export const AreaCoverWrapper = styled.div<AreaCoverWrapperProps>`
       width: 100%;
       height: 100%;
       background-position: 0 0;
+      cursor: pointer;
 
       .info {
         display: flex;
@@ -36,6 +37,7 @@ export const AreaCoverWrapper = styled.div<AreaCoverWrapperProps>`
         background-position: 0 -537px;
         color: #ccc;
         height: 27px;
+        cursor: default;
 
         .erji {
           margin-right: 5px;
@@ -50,6 +52,7 @@ export const AreaCoverWrapper = styled.div<AreaCoverWrapperProps>`
           width: 16px;
           height: 17px;
           background-position: 0 0;
+          cursor: pointer;
         }
       }
     }
@@ -59,6 +62,15 @@ export const AreaCoverWrapper = styled.div<AreaCoverWrapperProps>`
     font-size: 14px;
     color: #000;
     margin-top: 5px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4; /* 限制为4行 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    &:hover{
+      cursor: pointer;
+      text-decoration: underline;
+    }
   }
 
   .cover-source {

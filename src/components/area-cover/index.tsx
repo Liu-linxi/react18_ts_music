@@ -34,7 +34,7 @@ const AreaCover: FC<IProps> = ({ info, right }) => {
           </div>
         </div>
       </div>
-      <div className='cover-bottom text-nowrap'>{info.name}</div>
+      <div className='cover-bottom'>{info.name}</div>
       {/* 可选的来源信息 */}
       {/* <div className="cover-source">
         by {info.copywriter || info.creator?.nickname}
