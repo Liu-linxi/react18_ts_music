@@ -1,7 +1,7 @@
 import React, { memo, useEffect } from "react";
 import type { FC, ReactNode } from "react";
 import { useDispatch } from "react-redux";
-import { fetchBannerDataAction } from "./store/recommend";
+import { fetchBannerDataAction, fetchHotRecommnedAction } from "./store/recommend";
 import { AppDispatchType } from "@/store";
 import { RecommendWraper, Content, RecommendLeft, RecommendRight } from "./style";
 
@@ -18,6 +18,7 @@ const Recommend: FC<IProps> = () => {
 
   useEffect(() => {
     dispatch(fetchBannerDataAction());
+    dispatch(fetchHotRecommnedAction())
   }, [dispatch]);
 
   return (
