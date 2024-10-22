@@ -3,6 +3,8 @@ import type { FC, ReactNode } from "react";
 import { useDispatch } from "react-redux";
 import { fetchBannerDataAction } from "./store/recommend";
 import { AppDispatchType } from "@/store";
+import { RecommendWraper, Content, RecommendLeft, RecommendRight } from "./style";
+
 import TopBanner from "./c-cpns/top-banner";
 
 interface IProps {
@@ -18,9 +20,13 @@ const Recommend: FC<IProps> = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <TopBanner/>
-    </div>
+    <RecommendWraper>
+      <TopBanner />
+      <Content className='wrap-v2'>
+        <RecommendLeft></RecommendLeft>
+        <RecommendRight></RecommendRight>
+      </Content>
+    </RecommendWraper>
   );
 };
 
