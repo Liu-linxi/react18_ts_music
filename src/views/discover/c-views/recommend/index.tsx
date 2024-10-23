@@ -1,7 +1,7 @@
 import React, { memo, useEffect } from "react";
 import type { FC, ReactNode } from "react";
 import { useDispatch } from "react-redux";
-import { fetchBannerDataAction, fetchHotRecommnedAction, fetchNewAlbumAction } from "./store/recommend";
+import { fetchBannerDataAction, fetchHotRecommnedAction, fetchNewAlbumAction, fetchTopListAction } from "./store/recommend";
 import { AppDispatchType } from "@/store";
 import { RecommendWraper, Content, RecommendLeft, RecommendRight } from "./style";
 
@@ -22,6 +22,10 @@ const Recommend: FC<IProps> = () => {
     dispatch(fetchBannerDataAction());
     dispatch(fetchHotRecommnedAction());
     dispatch(fetchNewAlbumAction());
+    dispatch(fetchTopListAction(19723756));
+    dispatch(fetchTopListAction(3779629))
+    dispatch(fetchTopListAction(2884035))
+
   }, [dispatch]);
 
   return (

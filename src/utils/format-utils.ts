@@ -1,4 +1,4 @@
-export function getSizeImage(imgUrl: string | undefined, size: number) {
+export function getSizeImage(imgUrl: string | undefined, size?: number) {
   return `${imgUrl}?param=${size}x${size}`;
 }
 
@@ -12,4 +12,3 @@ export function getCount(count: number) {
     return Math.floor(count / 10000000) / 10 + "亿";
   }
 }
- 
