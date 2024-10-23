@@ -8,6 +8,7 @@ import { RecommendWraper, Content, RecommendLeft, RecommendRight } from "./style
 import TopBanner from "./c-cpns/top-banner";
 import HotRecommend from "./c-cpns/hot-recommend";
 import NewAlbum from "./c-cpns/new-album";
+import RankingList from "./c-cpns/ranking-list";
 
 interface IProps {
   children?: ReactNode; // 或者React.ReactNode
@@ -30,6 +31,7 @@ const Recommend: FC<IProps> = () => {
         <RecommendLeft>
           <HotRecommend />
           <NewAlbum />
+          <RankingList />
         </RecommendLeft>
         <RecommendRight></RecommendRight>
       </Content>
