@@ -31,11 +31,11 @@ export const AlbumWrapper = styled.div<AlbumWrapperProps>`
     .play {
       display: none;
       position: absolute;
-      right: 23px;
+      left: 72px;
       bottom: 3px;
-      width: 16px;
-      height: 17px;
-      background-position: 0 0;
+      width: 22px;
+      height: 22px;
+      background-position: 0 -85px;
       cursor: pointer;
     }
     &:hover{
