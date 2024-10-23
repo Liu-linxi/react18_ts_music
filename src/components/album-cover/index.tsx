@@ -33,6 +33,7 @@ const AlbumCover: FC<IProps> = ({ info, size = "100px", width = "118px", bgp = "
         <a href='/abc' className='cover sprite_covor'>
           {info.name}
         </a>
+        <i className='sprite_icon play'></i>
       </div>
       <div className='album-info'>
         <div className='name'>{info.name}</div>

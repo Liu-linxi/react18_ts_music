@@ -28,6 +28,21 @@ export const AlbumWrapper = styled.div<AlbumWrapperProps>`
       background-position: 0 ${(props) => props.bgp};
       text-indent: -9999px;
     }
+    .play {
+      display: none;
+      position: absolute;
+      right: 23px;
+      bottom: 3px;
+      width: 16px;
+      height: 17px;
+      background-position: 0 0;
+      cursor: pointer;
+    }
+    &:hover{
+      .play {
+        display: inline-block;
+      }
+    }
   }
 
   .album-info {
@@ -39,7 +54,7 @@ export const AlbumWrapper = styled.div<AlbumWrapperProps>`
       text-overflow: ellipsis;
       overflow: hidden;
       cursor: pointer;
-      &:hover{
+      &:hover {
         text-decoration: underline;
       }
     }
@@ -47,7 +62,7 @@ export const AlbumWrapper = styled.div<AlbumWrapperProps>`
     .artist {
       color: #666;
       cursor: pointer;
-      &:hover{
+      &:hover {
         text-decoration: underline;
       }
     }
