@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface AreaCoverWrapperProps {
-  right: number;
+  right: string;
 }
 
 export const AreaCoverWrapper = styled.div<AreaCoverWrapperProps>`

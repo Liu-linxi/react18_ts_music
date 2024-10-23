@@ -15,11 +15,11 @@ interface IInfo {
 
 interface IProps {
   children?: ReactNode; // 可选的 children 属性
-  right: number; // 必须的 right 属性
+  right?: string; // 必须的 right 属性
   info: IInfo; // 使用具体类型
 }
 
-const AreaCover: FC<IProps> = ({ info, right }) => {
+const AreaCover: FC<IProps> = ({ info, right='20px' }) => {
   return (
     <AreaCoverWrapper right={right}>
       <div className='cover-top'>

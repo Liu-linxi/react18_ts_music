@@ -22,7 +22,7 @@ const HotRecommend: FC<IProps> = () => {
       <AreaHeader title='热门推荐' keywords={["华语", "流行", "摇滚", "民谣", "电子"]} moreLink='/discover/playlist' keywordClick={keywordClick} />
       <div className='recommend-list'>
         {hotRecommends.slice(0, 8).map((item) => {
-          return <AreaCover info={item} key={item.id} right={0} />;
+          return <AreaCover info={item} key={item.id} />;
         })}
       </div>
     </HotRecommendWrapper>
