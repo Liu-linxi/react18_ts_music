@@ -53,6 +53,9 @@ export const AreaCoverWrapper = styled.div<AreaCoverWrapperProps>`
           height: 17px;
           background-position: 0 0;
           cursor: pointer;
+          &:hover{
+            background-position: 0 -60px;
+          }
         }
       }
     }
