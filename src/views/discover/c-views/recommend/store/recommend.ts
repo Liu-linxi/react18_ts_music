@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getBanners, getHotRecommend } from "../service/recommend";
-import type{ IBannersDataType, IHotRecommendsDataType } from "./type";
+import { getBanners, getHotRecommend, getNewAlbum } from "../service/recommend";
+import type { IBannersDataType, IHotRecommendsDataType, INewAlbumDataType } from "./type";
 
 export const fetchBannerDataAction = createAsyncThunk("banners", async (arg, { dispatch }) => {
   const res = await getBanners();
@@ -8,21 +8,25 @@ export const fetchBannerDataAction = createAsyncThunk("banners", async (arg, { d
   // 这里发生异常需要自己编写try_catch
   dispatch(changeBannersAction(res.banners));
 });
-
-export const fetchHotRecommnedAction=createAsyncThunk("hotRecommend",async(arg, { dispatch })=>{
+export const fetchHotRecommnedAction = createAsyncThunk("hotRecommend", async (arg, { dispatch }) => {
   const res = await getHotRecommend(8);
   dispatch(changeHotRecommnedAction(res.result));
-
-})
+});
+export const fetchNewAlbumAction = createAsyncThunk("newAlbum", async (arg, { dispatch }) => {
+  const res = await getNewAlbum(10, 0);
+  dispatch(changeNewAlbumAction(res.albums));
+});
 
 interface IrecommendState {
   banners: IBannersDataType[];
-  hotRecommends:IHotRecommendsDataType[];
+  hotRecommends: IHotRecommendsDataType[];
+  newAlbum: INewAlbumDataType[];
 }
 
 const initialState: IrecommendState = {
   banners: [],
-  hotRecommends:[],
+  hotRecommends: [],
+  newAlbum: [],
 };
 
 const recommendSlice = createSlice({
@@ -34,6 +38,9 @@ const recommendSlice = createSlice({
     },
     changeHotRecommnedAction(state, { payload }) {
       state.hotRecommends = payload;
+    },
+    changeNewAlbumAction(state, { payload }) {
+      state.newAlbum = payload;
     },
   },
 
@@ -49,6 +56,5 @@ const recommendSlice = createSlice({
   // }
 });
 
-export const { changeBannersAction,changeHotRecommnedAction } = recommendSlice.actions;
+export const { changeBannersAction, changeHotRecommnedAction, changeNewAlbumAction } = recommendSlice.actions;
 export default recommendSlice.reducer;
-

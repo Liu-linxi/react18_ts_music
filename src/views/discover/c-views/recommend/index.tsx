@@ -1,12 +1,13 @@
 import React, { memo, useEffect } from "react";
 import type { FC, ReactNode } from "react";
 import { useDispatch } from "react-redux";
-import { fetchBannerDataAction, fetchHotRecommnedAction } from "./store/recommend";
+import { fetchBannerDataAction, fetchHotRecommnedAction, fetchNewAlbumAction } from "./store/recommend";
 import { AppDispatchType } from "@/store";
 import { RecommendWraper, Content, RecommendLeft, RecommendRight } from "./style";
 
 import TopBanner from "./c-cpns/top-banner";
 import HotRecommend from "./c-cpns/hot-recommend";
+import NewAlbum from "./c-cpns/new-album";
 
 interface IProps {
   children?: ReactNode; // 或者React.ReactNode
@@ -18,7 +19,8 @@ const Recommend: FC<IProps> = () => {
 
   useEffect(() => {
     dispatch(fetchBannerDataAction());
-    dispatch(fetchHotRecommnedAction())
+    dispatch(fetchHotRecommnedAction());
+    dispatch(fetchNewAlbumAction());
   }, [dispatch]);
 
   return (
@@ -27,6 +29,7 @@ const Recommend: FC<IProps> = () => {
       <Content className='wrap-v2'>
         <RecommendLeft>
           <HotRecommend />
+          <NewAlbum />
         </RecommendLeft>
         <RecommendRight></RecommendRight>
       </Content>
