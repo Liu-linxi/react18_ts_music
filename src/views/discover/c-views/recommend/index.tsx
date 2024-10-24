@@ -1,7 +1,7 @@
 import React, { memo, useEffect } from "react";
 import type { FC, ReactNode } from "react";
 import { useDispatch } from "react-redux";
-import { fetchBannerDataAction, fetchHotRecommnedAction, fetchNewAlbumAction, fetchTopListAction } from "./store/recommend";
+import { fetchBannerDataAction, fetchHotRecommnedAction, fetchNewAlbumAction, fetchSettleSingsAction, fetchTopListAction } from "./store/recommend";
 import { AppDispatchType } from "@/store";
 import { RecommendWraper, Content, RecommendLeft, RecommendRight } from "./style";
 
@@ -10,6 +10,7 @@ import HotRecommend from "./c-cpns/hot-recommend";
 import NewAlbum from "./c-cpns/new-album";
 import RankingList from "./c-cpns/ranking-list";
 import UserLogin from "./c-cpns/user-login";
+import SettleSinger from "./c-cpns/settle-singer";
 
 interface IProps {
   children?: ReactNode; // 或者React.ReactNode
@@ -26,6 +27,7 @@ const Recommend: FC<IProps> = () => {
     dispatch(fetchTopListAction(19723756));
     dispatch(fetchTopListAction(3779629));
     dispatch(fetchTopListAction(2884035));
+    dispatch(fetchSettleSingsAction());
   }, [dispatch]);
 
   return (
@@ -39,6 +41,7 @@ const Recommend: FC<IProps> = () => {
         </RecommendLeft>
         <RecommendRight>
           <UserLogin />
+          <SettleSinger />
         </RecommendRight>
       </Content>
     </RecommendWraper>

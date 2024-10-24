@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getBanners, getHotRecommend, getNewAlbum, getTopList } from "../service/recommend";
-import type { IBannersDataType, IHotRecommendsDataType, INewAlbumDataType } from "./type";
+import { getBanners, getHotRecommend, getNewAlbum, getTopList, getArtistList } from "../service/recommend";
+import type { IBannersDataType, IHotRecommendsDataType, INewAlbumDataType, ISettleSingsDataType } from "./type";
 
 export const fetchBannerDataAction = createAsyncThunk("banners", async (arg, { dispatch }) => {
   const res = await getBanners();
@@ -21,6 +21,11 @@ export const fetchTopListAction = createAsyncThunk("topList", async (arg: number
   dispatch(changeTopListAction(res.playlist));
 });
 
+export const fetchSettleSingsAction = createAsyncThunk("settleSings", async (arg, { dispatch }) => {
+  const res = await getArtistList(5, 5001);
+  dispatch(changeSettleSingsAction(res.artists));
+});
+
 interface IrecommendState {
   banners: IBannersDataType[];
   hotRecommends: IHotRecommendsDataType[];
@@ -28,6 +33,7 @@ interface IrecommendState {
   topUpList: any;
   topNewList: any;
   topOriginList: any;
+  settleSings: ISettleSingsDataType[];
 }
 
 const initialState: IrecommendState = {
@@ -37,6 +43,7 @@ const initialState: IrecommendState = {
   topUpList: {},
   topNewList: {},
   topOriginList: {},
+  settleSings: [],
 };
 
 const recommendSlice = createSlice({
@@ -67,6 +74,9 @@ const recommendSlice = createSlice({
           console.log("其他数据处理");
       }
     },
+    changeSettleSingsAction(state, { payload }) {
+      state.settleSings = payload;
+    },
   },
 
   // 将数据存储到state其中一种方式
@@ -81,5 +91,5 @@ const recommendSlice = createSlice({
   // }
 });
 
-export const { changeBannersAction, changeHotRecommnedAction, changeNewAlbumAction, changeTopListAction } = recommendSlice.actions;
+export const { changeBannersAction, changeHotRecommnedAction, changeNewAlbumAction, changeTopListAction, changeSettleSingsAction } = recommendSlice.actions;
 export default recommendSlice.reducer;
