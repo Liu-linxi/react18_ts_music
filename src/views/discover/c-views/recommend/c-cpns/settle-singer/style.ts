@@ -48,6 +48,10 @@ export const SettleSongerWrapper = styled.div`
       background-color: #fafafa;
       border: 1px solid #c3c3c3;
       text-decoration: none;
+      font-size: 12px;
+      &:hover{
+        background-color: #fff;
+      }
     }
   }
 `;
