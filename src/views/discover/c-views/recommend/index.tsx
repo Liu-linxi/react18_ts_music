@@ -11,6 +11,7 @@ import NewAlbum from "./c-cpns/new-album";
 import RankingList from "./c-cpns/ranking-list";
 import UserLogin from "./c-cpns/user-login";
 import SettleSinger from "./c-cpns/settle-singer";
+import HotRadio from "./c-cpns/hot-radio";
 
 interface IProps {
   children?: ReactNode; // 或者React.ReactNode
@@ -42,6 +43,7 @@ const Recommend: FC<IProps> = () => {
         <RecommendRight>
           <UserLogin />
           <SettleSinger />
+          <HotRadio />
         </RecommendRight>
       </Content>
     </RecommendWraper>

@@ -112,7 +112,7 @@ export const dicoverMenu: DicoverMenuType[] = [
 // 热门主播
 export const hotRadios: HotRadiosType[] = [
   {
-    picUrl: "http://p1.music.126.net/H3QxWdf0eUiwmhJvA4vrMQ==/1407374893913311.jpg",
+    picUrl: "https://p1.music.126.net/H3QxWdf0eUiwmhJvA4vrMQ==/1407374893913311.jpg?param=40y40",
     name: "陈立",
     position: "心理学家、美食家陈立教授",
     url: "/user/home?id=278438485",
