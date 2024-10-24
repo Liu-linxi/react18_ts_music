@@ -3,6 +3,7 @@ import type { FC, ReactNode } from "react";
 import { SettleSongerWrapper } from "./style";
 import { useAppSelector } from "@/store";
 import { getSizeImage } from "@/utils/format-utils";
+import AreaHeaderSmall from "@/components/area-header-small";
 
 interface IProps {
   children?: ReactNode; // 或者React.ReactNode
@@ -15,6 +16,7 @@ const SettleSinger: FC<IProps> = () => {
 
   return (
     <SettleSongerWrapper>
+      <AreaHeaderSmall title='入驻歌手' more='查看全部>' />
       <div className='singer-list'>
         {settleSings.map((item) => {
           return (
