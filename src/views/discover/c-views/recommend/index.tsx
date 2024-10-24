@@ -9,6 +9,7 @@ import TopBanner from "./c-cpns/top-banner";
 import HotRecommend from "./c-cpns/hot-recommend";
 import NewAlbum from "./c-cpns/new-album";
 import RankingList from "./c-cpns/ranking-list";
+import UserLogin from "./c-cpns/user-login";
 
 interface IProps {
   children?: ReactNode; // 或者React.ReactNode
@@ -23,9 +24,8 @@ const Recommend: FC<IProps> = () => {
     dispatch(fetchHotRecommnedAction());
     dispatch(fetchNewAlbumAction());
     dispatch(fetchTopListAction(19723756));
-    dispatch(fetchTopListAction(3779629))
-    dispatch(fetchTopListAction(2884035))
-
+    dispatch(fetchTopListAction(3779629));
+    dispatch(fetchTopListAction(2884035));
   }, [dispatch]);
 
   return (
@@ -37,7 +37,9 @@ const Recommend: FC<IProps> = () => {
           <NewAlbum />
           <RankingList />
         </RecommendLeft>
-        <RecommendRight></RecommendRight>
+        <RecommendRight>
+          <UserLogin />
+        </RecommendRight>
       </Content>
     </RecommendWraper>
   );
