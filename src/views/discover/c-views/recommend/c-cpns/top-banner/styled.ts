@@ -37,6 +37,18 @@ export const BannerRight = styled.a.attrs({
   width: 254px;
   height: 270px;
   background: url(${download});
+  position: relative;
+  &::after {
+    content: "PC 安卓 iPhone WP iPad Mac 六大客户端";
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    display: block;
+    transform: translateX(-50%);
+    width: 224px;
+    color: #8d8d8d;
+    font-size: 12px;
+  }
 `;
 
 export const BannerControl = styled.div`
