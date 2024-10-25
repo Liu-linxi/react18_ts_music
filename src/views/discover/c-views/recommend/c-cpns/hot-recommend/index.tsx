@@ -1,9 +1,10 @@
-import React, { memo } from "react";
+import React, { memo, useCallback } from "react";
 import type { FC, ReactNode } from "react";
 import { HotRecommendWrapper } from "./style";
 import AreaHeader from "@/components/area-header";
 import { useAppSelector } from "@/store";
 import AreaCover from "@/components/area-cover";
+import { useNavigate } from "react-router-dom";
 
 interface IProps {
   children?: ReactNode; // 或者React.ReactNode
@@ -13,10 +14,15 @@ const HotRecommend: FC<IProps> = () => {
   const { hotRecommends } = useAppSelector((state) => ({
     hotRecommends: state.recommend.hotRecommends,
   }));
+  const navigate = useNavigate();
 
-  function keywordClick() {
-    console.log("🚀 ~ keywordClick ~ 被执行了:", ":");
-  }
+  const keywordClick = useCallback(
+    (keyword: string) => {
+      navigate(`/discover/playlist?cat=${keyword}`);
+      // navigate("/discover/playlist", { state: { cat: keyword } });
+    },
+    [navigate],
+  );
   return (
     <HotRecommendWrapper>
       <AreaHeader title='热门推荐' keywords={["华语", "流行", "摇滚", "民谣", "电子"]} moreLink='/discover/playlist' keywordClick={keywordClick} />
