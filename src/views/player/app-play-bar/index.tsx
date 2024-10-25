@@ -3,13 +3,18 @@ import type { FC, ReactNode } from "react";
 import { Control, Operator, PlaybarWrapper, PlayInfo } from "./style";
 import { NavLink } from "react-router-dom";
 import { Slider } from "antd";
-import { formatMinuteSecond } from "@/utils/format-utils";
+import { formatMinuteSecond, getSizeImage } from "@/utils/format-utils";
+import { useAppSelector } from "@/store";
 
 interface IProps {
   children?: ReactNode; // 或者React.ReactNode
 }
 // 或者React.FC
 const AppPlayerBar: FC<IProps> = () => {
+  const { currentSong } = useAppSelector((state) => ({
+    currentSong: state.player.currentSong,
+  }));
+
   return (
     <PlaybarWrapper className='sprite_playbar'>
       <div className='content wrap-v2'>
@@ -21,16 +26,18 @@ const AppPlayerBar: FC<IProps> = () => {
         <PlayInfo>
           <div className='image'>
             <NavLink to='/discover/player'>
-              <img src='https://p2.music.126.net/OVkXDNmbk2uj6wE1KTZIwQ==/109951165203334337.jpg?param=34y34' alt='' />
+              {/* <img src='https://p2.music.126.net/OVkXDNmbk2uj6wE1KTZIwQ==/109951165203334337.jpg?param=34y34' alt='' /> */}
+              <img src={getSizeImage(currentSong?.al?.picUrl,34)} alt='' />
+
             </NavLink>
           </div>
           <div className='info'>
             <div className='song'>
-              <span className='song-name'>测试名</span>
-              <span className='singer-name'>小标题</span>
+              <span className='song-name'>{currentSong.name}</span>
+              <span className='singer-name'>{currentSong.ar[0].name}</span>
             </div>
             <div className='progress'>
-              <Slider value={23}/>
+              <Slider value={23} />
               <div className='time'>
                 <span className='now-time'>{formatMinuteSecond(123 * 1000)}</span>
                 <span className='divider'>/</span>
