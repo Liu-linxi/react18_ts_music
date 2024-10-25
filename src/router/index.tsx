@@ -11,6 +11,7 @@ const Djradio = lazy(() => import("@/views/discover/c-views/djradio")); //主播
 const Artist = lazy(() => import("@/views/discover/c-views/artist")); //歌手
 const Album = lazy(() => import("@/views/discover/c-views/album")); //新碟上架
 
+const Player = lazy(() => import("@/views/player")); //新碟上架
 const Mine = lazy(() => import("@/views/mine")); //我的音乐
 const Focus = lazy(() => import("@/views/focus")); //关注
 const Download = lazy(() => import("@/views/download")); //下载客户端
@@ -20,7 +21,7 @@ const Template = lazy(() => import("@/views/demo/template")); //模板使用示�
 const routes: RouteObject[] = [
   {
     path: "/",
-    element: <Navigate to="/discover/recommend" />,
+    element: <Navigate to='/discover/recommend' />,
   },
   {
     path: "/discover",
@@ -32,7 +33,7 @@ const routes: RouteObject[] = [
        */
       {
         path: "",
-        element: <Navigate to="/discover/recommend" />,
+        element: <Navigate to='/discover/recommend' />,
       },
       {
         path: "/discover/recommend",
@@ -57,6 +58,10 @@ const routes: RouteObject[] = [
       {
         path: "/discover/album",
         element: <Album />,
+      },
+      {
+        path: "/discover/player",
+        element: <Player />,
       },
     ],
   },
