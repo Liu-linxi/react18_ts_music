@@ -14,6 +14,7 @@ const AppPlayerBar: FC<IProps> = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const { currentSong } = useAppSelector(
@@ -45,19 +46,34 @@ const AppPlayerBar: FC<IProps> = () => {
         console.error("播放失败:", err);
         setIsPlaying(false); // 处理错误，更新播放状态
       }
-      console.log(currentSong.dt)
+      console.log(currentSong.dt);
       setDuration(currentSong.dt);
     };
 
     fetchSongUrl();
   }, [currentSong]);
-
+  /**
+   * 部分歌曲无法获取
+   * useEffect(() => {
+    audioRef.current!.src = getPlayUrl(currentSong.id);
+    audioRef.current
+      ?.play()
+      .then(() => {
+        setIsPlaying(true);
+      })
+      .catch(() => {
+        setIsPlaying(false);
+      });
+    setDuration(currentSong.dt);
+  }, [currentSong]);
+   */
   /** 音乐播放的进度处理 */
   function handleTimeUpdate() {
     const currentTime = audioRef.current!.currentTime;
     // console.log("音乐播放的进度处理", audioRef.current!.currentTime);
     const progress = ((currentTime * 1000) / duration) * 100;
     setProgress(progress);
+    setCurrentTime(currentTime);
   }
   function handlePlayBtnClick() {
     setIsPlaying((prevIsPlaying) => {
@@ -96,9 +112,9 @@ const AppPlayerBar: FC<IProps> = () => {
             <div className='progress'>
               <Slider value={progress} step={0.5} tooltip={{ formatter: null }} />
               <div className='time'>
-                <span className='now-time'>{formatMinuteSecond(123 * 1000)}</span>
+                <span className='now-time'>{formatMinuteSecond(currentTime * 1000)}</span>
                 <span className='divider'>/</span>
-                <span className='total-time'>{formatMinuteSecond(12312312)}</span>
+                <span className='total-time'>{formatMinuteSecond(duration)}</span>
               </div>
             </div>
           </div>
