@@ -35,8 +35,9 @@ const AppPlayerBar: FC<IProps> = () => {
         if (audioUrl) {
           // 确保 audioUrl 是字符串
           audioRef.current!.src = audioUrl; // 设置音频源
-          await audioRef.current?.play(); // 尝试播放
-          setIsPlaying(true); // 更新播放状态
+          // 可以加载后就播放
+          // await audioRef.current?.play(); // 尝试播放
+          // setIsPlaying(true); // 更新播放状态
         } else {
           console.error("没有找到歌曲 URL");
         }
