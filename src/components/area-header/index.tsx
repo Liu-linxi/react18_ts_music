@@ -40,7 +40,6 @@ AreaHeader.propTypes = {
   title: PropTypes.string.isRequired,
   keywords: PropTypes.array,
   moreLink: PropTypes.string.isRequired,
-  keywordClick: PropTypes.func.isRequired,
 };
 
 export default memo(AreaHeader);
