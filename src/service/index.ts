@@ -6,21 +6,21 @@ const lxRequest = new LXRequest({
   timeout: TIME_OUT,
   interceptors: {
     requestSuccessFn: (config) => {
-      console.log("请求成功拦截:", config);
+      // console.log("请求成功拦截:", config);
       // 临时处理如果使用本地操作就追加请求本地文件
       config.url = process.env.REACT_APP_ISMOCK === "true" ? config.url + ".json" : config.url;
       return config;
     },
     requestFailureFn: (err) => {
-      console.error("请求失败拦截:", err);
+      // console.error("请求失败拦截:", err);
       return err;
     },
     responseSuccessFn: (res) => {
-      console.log("响应成功拦截:", res);
+      // console.log("响应成功拦截:", res);
       return res;
     },
     responseFailureFn: (err) => {
-      console.error("响应失败拦截:", err);
+      // console.error("响应失败拦截:", err);
       return err;
     },
   },
