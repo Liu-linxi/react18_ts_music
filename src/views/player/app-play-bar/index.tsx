@@ -1,34 +1,75 @@
-import React, { memo, useCallback, useRef, useState } from "react";
+import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 import type { FC, ReactNode } from "react";
 import { Control, Operator, PlaybarWrapper, PlayInfo } from "./style";
 import { NavLink } from "react-router-dom";
 import { Slider } from "antd";
-import { formatMinuteSecond, getSizeImage } from "@/utils/format-utils";
-import { useAppSelector } from "@/store";
+import { formatMinuteSecond, getPlayUrl, getSizeImage, getSongUrlFun } from "@/utils/format-utils";
+import { useAppSelector, useShallowEqual } from "@/store";
 
 interface IProps {
   children?: ReactNode; // 或者React.ReactNode
 }
 // 或者React.FC
 const AppPlayerBar: FC<IProps> = () => {
-  const { currentSong } = useAppSelector((state) => ({
-    currentSong: state.player.currentSong,
-  }));
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
-  const audioRef=useRef<HTMLAudioElement>(null)
+  const audioRef = useRef<HTMLAudioElement>(null);
 
-  const handlePlayBtnClick = useCallback(() => {
-    setIsPlaying(!isPlaying);
-    isPlaying ? audioRef.current?.pause() : audioRef.current?.play().catch(err => {
-      setIsPlaying(false);
+  const { currentSong } = useAppSelector(
+    (state) => ({
+      currentSong: state.player.currentSong,
+    }),
+    useShallowEqual,
+  );
+
+  // 从redux中获取数据
+  useEffect(() => {
+    const fetchSongUrl = async () => {
+      try {
+        /**
+         * 不能试用故此用请求的方式
+         * const audioUrl = getPlayUrl(currentSong.id);
+         */
+        const audioUrl = await getSongUrlFun(currentSong.id);
+        if (audioUrl) {
+          // 确保 audioUrl 是字符串
+          audioRef.current!.src = audioUrl; // 设置音频源
+          await audioRef.current?.play(); // 尝试播放
+          setIsPlaying(true); // 更新播放状态
+        } else {
+          console.error("没有找到歌曲 URL");
+        }
+      } catch (err) {
+        console.error("播放失败:", err);
+        setIsPlaying(false); // 处理错误，更新播放状态
+      }
+    };
+
+    fetchSongUrl();
+  }, [currentSong]);
+
+  /** 音乐播放的进度处理 */
+  function handleTimeUpdate() {
+    console.log("音乐播放的进度处理");
+  }
+  function handlePlayBtnClick() {
+    setIsPlaying((prevIsPlaying) => {
+      const newIsPlaying = !prevIsPlaying; // 获取新状态
+      if (newIsPlaying) {
+        audioRef.current?.play().catch(() => {
+          setIsPlaying(false); // 播放失败时更新状态
+        });
+      } else {
+        audioRef.current?.pause(); // 暂停
+      }
+      return newIsPlaying; // 返回新状态
     });
-  }, [isPlaying]);
+  }
 
   return (
     <PlaybarWrapper className='sprite_playbar'>
       <div className='content wrap-v2'>
-        <Control isPlaying={isPlaying}>
+        <Control isplaying={isPlaying}>
           <button className='sprite_playbar btn prev'></button>
           <button className='sprite_playbar btn play' onClick={() => handlePlayBtnClick()}></button>
           <button className='sprite_playbar btn next'></button>
@@ -68,7 +109,7 @@ const AppPlayerBar: FC<IProps> = () => {
           </div>
         </Operator>
       </div>
-      <audio ref={audioRef}/>
+      <audio ref={audioRef} onTimeUpdate={handleTimeUpdate} />
     </PlaybarWrapper>
   );
 };

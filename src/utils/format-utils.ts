@@ -1,3 +1,5 @@
+import { getSongUrl } from "@/views/player/service/player";
+
 export function getSizeImage(imgUrl: string | undefined, size?: number) {
   return `${imgUrl}?param=${size}x${size}`;
 }
@@ -56,4 +58,13 @@ export function formatMonthDay(time: string | number | Date): string {
 
 export function getPlayUrl(id: string | number) {
   return `https://music.163.com/song/media/outer/url?id=${id}.mp3`;
+}
+
+export function getSongUrlFun(id: string | number): Promise<string | undefined> {
+  return getSongUrl(id).then(res => {
+    return res.data.length > 0 ? res.data[0].url : undefined;
+  }).catch(err => {
+    console.error("获取歌曲 URL 失败:", err);
+    return undefined; // 处理错误并返回 undefined
+  });
 }

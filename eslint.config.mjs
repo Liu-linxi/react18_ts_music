@@ -9,6 +9,7 @@ export default [
     rules: {
       "@typescript-eslint/no-var-requires": "off", // 或 'warn' 或 'error'
       "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-non-null-assertion":"off",
     },
   },
   { languageOptions: { globals: globals.browser } },

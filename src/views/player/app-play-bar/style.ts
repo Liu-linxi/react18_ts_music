@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import progress_bar from '@/assets/img/progress_bar.png'
-import sprite_icon from '@/assets/img/sprite_icon.png'
+import progress_bar from "@/assets/img/progress_bar.png";
+import sprite_icon from "@/assets/img/sprite_icon.png";
 import huazhonghua from "@/assets/img/huazhonghua.png";
 
 export const PlaybarWrapper = styled.div`
@@ -25,9 +25,11 @@ export const PlaybarWrapper = styled.div`
   }
 `;
 interface ControlType {
-  isPlaying?: boolean;
+  isplaying?: boolean;
 }
-export const Control = styled.div<ControlType>`
+export const Control = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== "isplaying", // 过滤掉 isPlaying
+})<ControlType>`
   display: flex;
   align-items: center;
 
@@ -45,7 +47,7 @@ export const Control = styled.div<ControlType>`
     width: 36px;
     height: 36px;
     margin: 0 8px;
-    background-position: 0 ${(props) => (props.isPlaying ? "-165px" : "-204px")};
+    background-position: 0 ${(props) => (props.isplaying ? "-165px" : "-204px")};
   }
 
   .next {
@@ -107,7 +109,7 @@ export const PlayInfo = styled.div`
           border: none;
           margin-top: -5px;
           background: url(${sprite_icon}) 0 -250px;
-          &::after{
+          &::after {
             display: none;
           }
         }
@@ -138,7 +140,7 @@ export const Operator = styled.div<OperatorType>`
     width: 25px;
     height: 25px;
   }
-  .pip{
+  .pip {
     background: url(${huazhonghua}) no-repeat 0 0;
   }
   .favor {
