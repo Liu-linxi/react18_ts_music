@@ -47,6 +47,7 @@ export const Control = styled.div.withConfig({
     width: 36px;
     height: 36px;
     margin: 0 8px;
+    cursor: pointer;
     background-position: 0 ${(props) => (props.isplaying ? "-165px" : "-204px")};
   }
 
