@@ -5,14 +5,14 @@ interface IPlayerState {
 }
 const initialState: IPlayerState = {
   currentSong: {
-    name: "温柔",
-    id: 386538,
+    name: "情非得已 (童声版)",
+    id: 33894312,
     pst: 0,
     t: 0,
     ar: [
       {
         id: 13193,
-        name: "五月天",
+        name: "群星",
         tns: [],
         alias: [],
       },
@@ -27,13 +27,13 @@ const initialState: IPlayerState = {
     cf: "",
     al: {
       id: 38285,
-      name: "我们是五月天",
-      picUrl: "https://p2.music.126.net/XlMYABTsvXGxOn0h9F61VQ==/109951168750902183.jpg",
+      name: "热门华语275",
+      picUrl: "https://p1.music.126.net/cpoUinrExafBHL5Nv5iDHQ==/109951166361218466.jpg",
       tns: [],
       pic_str: "109951168750902183",
       pic: 109951168750902180,
     },
-    dt: 269800,
+    dt: 267232,
     h: {
       br: 320000,
       fid: 0,

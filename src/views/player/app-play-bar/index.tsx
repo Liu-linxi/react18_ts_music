@@ -33,8 +33,8 @@ const AppPlayerBar: FC<IProps> = () => {
          * 不能试用故此用请求的方式
          * const audioUrl = getPlayUrl(currentSong.id);
          */
-        const audioUrl =
-          "https://m10.music.126.net/20241029112103/0b412faabb4d70348086aafdeefcd97f/ymusic/c48c/fb99/1950/a0634034446f904929e37dc2686ba91b.mp3?vuutv=pUtmLff0YiMsiwngG9KYOVigqrJcV6/8y66/gLAwAg7RWDP2Wm7ObdKkQu5pcOhiVELAjUDMnbAADh7Gr5DoNlcNZv7REpZvYK+tJ+wqXbfSfZr5weLORFIfDJaswXISJ/WP/Mty8284Z1F9gLEyiQJO5/TfUCld7wnKKlOKFul75gEkMqj2t5/229CV81WYBLjINXPG/ATno0W2sSpueSD8pA2fyihGD8XkrgRTd/VnNIV++G2VaLveWAh5xcRRioK+nXsCEjNnQLtOB7fzb8sjf/enGMybbgQMABNOU6dM7hB0DRoHmenLAAoSPA0o4Hyv3qcFdziLFIUHysFrko91sqa/X52PxCpwLkjvrxepezkd5zRB+C0x49dtjfoL"; // await getSongUrlFun(currentSong.id);
+        const audioUrl = getPlayUrl(currentSong.id);
+        // const audioUrl = "https://m10.music.126.net/20250224112749/cd3373a9fca0ca6c67fd83c37dbe1328/ymusic/c48c/fb99/1950/a0634034446f904929e37dc2686ba91b.mp3?vuutv=aj0HPVZwlLtewscOXAFwGMWireXYi2IND3un1tzBqupBYCp6C3/FvQHhdWz75uwenCkM95EBnOroQysUfMRikVOY63Y1N9V11Uivx1Ic5z0ne+iGTJmjOQ84HVS3Zr62VeX6CuwU94Gfb2AUcmT/qtIeflrdHLs4sPrAhNFe8JTni59SGz9uxY3efmSHGH2FElLJou/6cKOE4zBZTf0LrqICk2N5HjUBNP445sC45oVpJ2f6rfZ6cQ5BZ8XI1jiwAIUihzAPFP2H4P91DvaMzRwne+E5CIs/bkDB+z93hQzLJD3Z7TdE581h3tC3veJT7O/83VIk03TMWMZFzpU83HNBFXC6LtlXytCxd+/ByXQdOOJaJ3yWatCI9MhC64NZ"; // await getSongUrlFun(currentSong.id);
         if (audioUrl) {
           // 确保 audioUrl 是字符串
           audioRef.current!.src = audioUrl; // 设置音频源
@@ -69,6 +69,18 @@ const AppPlayerBar: FC<IProps> = () => {
     setDuration(currentSong.dt);
   }, [currentSong]);
    */
+  useEffect(() => {
+    audioRef.current!.src = getPlayUrl(currentSong.id);
+    audioRef.current
+      ?.play()
+      .then(() => {
+        setIsPlaying(true);
+      })
+      .catch(() => {
+        setIsPlaying(false);
+      });
+    setDuration(currentSong.dt);
+  }, [currentSong]);
   /** 音乐播放的进度处理 */
   function handleTimeUpdate() {
     const currentTime = audioRef.current!.currentTime;
@@ -98,15 +110,15 @@ const AppPlayerBar: FC<IProps> = () => {
     const time = ((value / 100.0) * duration) / 1000;
     audioRef.current!.currentTime = time;
     setCurrentTime(time);
-    setIsSliding(true);
+    setIsSliding(false);
   }
   /** slider方法 切换 */
   function handleSliderChange(value: number) {
     setProgress(value);
     const time = ((value / 100.0) * duration) / 1000;
     audioRef.current!.currentTime = time;
-    setCurrentTime(time);
-    setIsSliding(false);
+    // setCurrentTime(time);
+    // setIsSliding(false);
   }
   return (
     <PlaybarWrapper className='sprite_playbar'>
@@ -129,7 +141,7 @@ const AppPlayerBar: FC<IProps> = () => {
               <span className='singer-name'>{currentSong.ar[0].name}</span>
             </div>
             <div className='progress'>
-              <Slider value={progress} step={0.5} tooltip={{ formatter: null }} onChange={handleSliderChange} onChangeComplete={handleChangeComplete} />
+              <Slider value={progress} step={0.5} tooltip={{ formatter: null }} onChange={handleSliderChange} onChangeComplete ={handleChangeComplete} />
               <div className='time'>
                 <span className='now-time'>{formatMinuteSecond(currentTime * 1000)}</span>
                 <span className='divider'>/</span>
